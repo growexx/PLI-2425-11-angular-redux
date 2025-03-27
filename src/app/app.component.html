@@ -1,17 +1,20 @@
-<div class="container">
+<div class="container" [ngClass]="{'loading': isLoading()}">
     <h1>Task List</h1>
     
     <div class="task-list">
-        @if (isLoading) {
+        @if (isLoading() && tasks().length === 0) {
             <div class="loading">Loading...</div>
         }
-        @if (!isLoading && (!tasks || tasks.length === 0)) {
+        @if (!isLoading() && (!tasks() || tasks().length === 0)) {
             <div class="loading">No task added yet </div>
         }
-        @for (task of tasks; track task.id) {
+        @for (task of tasks(); track task.id) {
             <div class="task">
-                <input type="checkbox" id="task{{task.id}}" [checked]="task.completed">
-                <label for="task{{task.id}}">{{ task.todo }}</label>
+                <div class="task-title">
+                    <input type="checkbox" id="task{{task.id}}" [checked]="task.completed" (change)="onCompleteTask($event, task.id)">
+                    <label for="task{{task.id}}">{{ task.title }}</label>
+                </div>
+                <span class="remove-task" (click)="onRemoveTask(task.id)">❌</span>
             </div>
         }
     </div>

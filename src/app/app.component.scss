@@ -4,6 +4,7 @@
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
 
     h1 {
         text-align: center;
@@ -25,7 +26,13 @@
         .task {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             margin-bottom: 8px;
+
+            .task-title {
+                width: calc(100% - 24px);
+                display: flex;
+            }
 
             input[type="checkbox"] {
                 margin-right: 8px;
@@ -37,9 +44,23 @@
                 color: #333;
                 text-decoration: none;
                 cursor: pointer;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
 
                 &:hover {
                     color: #007bff;
+                }
+            }
+
+            .remove-task {
+                cursor: pointer;
+                margin-left: 8px;
+                font-size: 12px;
+                opacity: 0.5;
+
+                &:hover {
+                    opacity: 1;
                 }
             }
         }
@@ -80,5 +101,17 @@
                 opacity: 0.75;
             }
         }
+    }
+
+    &.loading::after {
+        content: '';
+        position: absolute;
+        background: red;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        border-radius: 8px;
+        opacity: 0.2;
     }
 }
