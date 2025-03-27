@@ -1,0 +1,84 @@
+.container {
+    width: 400px;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+    h1 {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .task-list {
+        max-height: 240px;
+        overflow: auto;
+        padding: 0 8px;
+        margin: 0 -8px 16px;
+
+        .loading {
+            text-align: center;
+            margin: 24px 0;
+        }
+
+        .task {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+
+            input[type="checkbox"] {
+                margin-right: 8px;
+                transform: scale(1.2);
+            }
+
+            label {
+                font-size: 16px;
+                color: #333;
+                text-decoration: none;
+                cursor: pointer;
+
+                &:hover {
+                    color: #007bff;
+                }
+            }
+        }
+    }
+
+    .add-task {
+        display: flex;
+        justify-content: space-between;
+
+        input[type="text"] {
+            width: 75%;
+            padding: 8px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+
+            &:focus {
+                outline: none;
+                border-color: #4CAF50;
+            }
+
+        }
+
+        button {
+            width: 20%;
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #45a049;
+            }
+
+            &:disabled {
+                opacity: 0.75;
+            }
+        }
+    }
+}

@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Task List</h1>
+    
+    <div class="task-list">
+        @if (isLoading) {
+            <div class="loading">Loading...</div>
+        }
+        @if (!isLoading && (!tasks || tasks.length === 0)) {
+            <div class="loading">No task added yet </div>
+        }
+        @for (task of tasks; track task.id) {
+            <div class="task">
+                <input type="checkbox" id="task{{task.id}}" [checked]="task.completed">
+                <label for="task{{task.id}}">{{ task.todo }}</label>
+            </div>
+        }
+    </div>
+    
+    <div class="add-task">
+        <input type="text" placeholder="Add a new task" id="newTaskInput" [(ngModel)]="newTask">
+        <button type="button" id="addTaskButton" [disabled]="newTask.length <= 0" (click)="onAddTask()">Add Task</button>
+    </div>
+</div>
